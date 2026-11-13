@@ -1,0 +1,29 @@
+name: PHP and database checks
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: mariadb:11
+        env:
+          MARIADB_ROOT_PASSWORD: ci-demo-only
+          MARIADB_DATABASE: petpass_demo
+          MARIADB_USER: petpass_demo
+          MARIADB_PASSWORD: change-me-local-only
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=10s --health-timeout=5s --health-retries=12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: pdo_mysql, mbstring, fileinfo
+      - run: find src config public scripts -name '*.php' -print0 | xargs -0 -n1 php -l
+      - run: cp .env.example .env
+      - run: php scripts/setup.php
+      - run: php scripts/setup.php | grep 'Existing tables were left untouched'

@@ -1,0 +1,1 @@
+<main class="narrow-page"><section class="activation-card"><span class="big-icon">🐾</span><h1>Página não encontrada</h1><p>Talvez esse caminho tenha ido passear. Volte para a página inicial.</p><a class="btn btn-primary btn-block" href="<?=url('/')?>">Ir ao início</a></section></main>

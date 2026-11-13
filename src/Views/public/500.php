@@ -1,0 +1,1 @@
+<main class="narrow-page"><section class="activation-card"><span class="big-icon">🛠</span><h1>Algo não saiu como esperado</h1><p>O sistema registrou o problema. Tente novamente em alguns instantes.</p><a class="btn btn-primary btn-block" href="<?=url('/')?>">Voltar</a></section></main>

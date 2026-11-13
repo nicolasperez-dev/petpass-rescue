@@ -1,0 +1,1 @@
+<main class="narrow-page"><section class="activation-card"><span class="big-icon">⚠️</span><h1><?=e($title)?></h1><p>Esta identificação não está ativa. Confira o código ou entre em contato com o suporte PetPass.</p><a class="btn btn-primary btn-block" href="<?=url('/')?>">Voltar ao início</a></section></main>
